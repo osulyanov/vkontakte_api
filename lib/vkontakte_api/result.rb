@@ -27,12 +27,12 @@ module VkontakteApi
       
     private
       def extract_result(response)
-        if response.error?
-          raise VkontakteApi::Error.new(response.error)
-        elsif response.execute_errors?
-          raise VkontakteApi::ExecuteError.new(response.execute_errors)
+        if response['error']
+          raise VkontakteApi::Error.new(response['error'])
+        elsif response['execute_errors']
+          raise VkontakteApi::ExecuteError.new(response['execute_errors'])
         else
-          response.response
+          response['response']
         end
       end
       

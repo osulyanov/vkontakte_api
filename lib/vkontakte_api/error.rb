@@ -20,19 +20,19 @@ module VkontakteApi
     # An exception is initialized by the data from response mash.
     # @param [Hash] data Error data.
     def initialize(data)
-      @error_code = data.error_code
-      @error_msg  = data.error_msg
+      @error_code = data['error_code']
+      @error_msg  = data['error_msg']
       
-      request_params = parse_params(data.request_params || [])
+      request_params = parse_params(data['request_params'] || [])
       
       @method_name  = request_params.delete('method')
       @access_token = request_params.delete('access_token')
       @oauth        = request_params.delete('oauth')
       @params       = request_params
       
-      @captcha_sid  = data.captcha_sid
-      @captcha_img  = data.captcha_img
-      @redirect_uri = data.redirect_uri
+      @captcha_sid  = data['captcha_sid']
+      @captcha_img  = data['captcha_img']
+      @redirect_uri = data['redirect_uri']
     end
     
     # A full description of the error.

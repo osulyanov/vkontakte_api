@@ -39,7 +39,7 @@ module VkontakteApi
           builder.request :retry, VkontakteApi.max_retries
           
           builder.response :vk_logger
-          builder.response :mashify
+          # builder.response :mashify
           builder.response :multi_json, preserve_raw: true
           
           builder.adapter VkontakteApi.adapter
